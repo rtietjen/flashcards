@@ -29,15 +29,6 @@
                     <div id="option-container-left">
 
                         <div id="deck-container">
-                            <div id="exim-container">
-                                <div id="exim-button-container">
-                                    <div id="button-import" class="button" onclick="eximImport()">import</div>
-                                    <div id="button-export" class="button" onclick="eximExport()">export</div>
-                                </div>
-                                <div id="exim-import-container" style="display:none">
-                                    <input id="import-file" type="file" /> <div id="import-cancel" class="button" onclick="eximImportCancel()">cancel</div>
-                                </div>
-                            </div><!-- exim-container -->
                             <div>Deck</div>
                             <div id="deck-choices">
                                 <select id="deck-list" onchange="deckSelect(this.options[this.selectedIndex].value)">
@@ -132,8 +123,7 @@
                 </div>
             </div>
             
-            <span id="credits"><a href="http://chrisfattarsi.com/flashcards">chris fattarsi</a></span>
-            <span id="version">0.7.2</span>
+           
         </div>
         
         <script src="js/modernizr.js" type="text/javascript" charset="utf-8"></script>
