@@ -183,8 +183,8 @@ a:link, a:visited {
 
 #container {
     position:relative;
- /*   width:460px; */
-    height:280px;
+  /*  width:460px;*/
+    height:100%;
     margin:auto;
     border:1px outset;
     background:url('background.png') repeat-x;

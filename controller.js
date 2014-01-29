@@ -703,6 +703,8 @@ function toggleOptionsShow() {
 
 //set display for the current card
 function updateDisplay(opts) {
+	var windowHeight = $(window).height();
+	$('body').height( windowHeight );
     if (opts == undefined) {
         opts = {'direction':'right'};
     }
