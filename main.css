@@ -187,7 +187,7 @@ a:link, a:visited {
 
 #container {
     position:relative;
-  /*  width:460px;*/
+    width:100%;
     height:100%;
     margin:auto;
     border:1px outset;
