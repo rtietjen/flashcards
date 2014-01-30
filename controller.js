@@ -554,7 +554,7 @@ function migrationCheck() {
                  {"phrase1":"Rider","phrase2":"A form attached to a policy that modifies the conditions of the policy by expanding or decreasing its benefits or excluding certain conditions from coverage. Also known as an endorsement. Most riders cost extra, but the additional premium paid does not go towards cash value accumulation. Most riders (such as double indemnity) will drop off a Life policy automatically at age 65. Most riders are added at policy issue, but they may also be added later on with the mutual consent of the parties."},
                  {"phrase1":"Risk","phrase2":"The uncertainty of loss that exists whenever more than one outcome is possible. In the area of Life insurance, death is certain, but time of death is uncertain. Also known as the chance of loss. Remember, only pure risk is insurable. Pure risk is the chance of loss without any chance for gain."},
                  {"phrase1":"Risk Selection","phrase2":"The process of selecting insureds with a normal claims expectancy, also known as underwriting or risk classification. Since most insurance companies are in business to make money, it is the underwriters job to select business that will generate an underwriting profit."},
-                 {"phrase1":"Settlement Option","phrase2":"Generally, there are 5 Life insurance Settlement Options"},
+                 {"phrase1":"Settlement Option","phrase2":"Generally, there are 5 Life insurance Settlement Options: Cash, Interest, Fixed Period, Fixed Amount or the beneficiary may use the proceeds of the policy to purchase an Annuity. Remember, proceeds of a Life policy are tax free. However, if the beneficiary selects the Interest Option, the interest will be taxable."},
                  {"phrase1":"Single-Premium Annuity","phrase2":"An Annuity purchased with one lump-sum payment, generally with after tax dollars. You can buy either a Single Premium Immediate Annuity, which allows you to annuitize right away, or you can buy a Single Premium Deferred Annuity, where you annuitize sometime in the future, perhaps at retirement age."},
                  {"phrase1":"Single-Premium Policy","phrase2":"A Life insurance policy on which the entire premium is paid in one payment, which creates an immediate cash value. Remember, in lieu of a traditional Whole life policy where payments are payable to age 100, you can buy a Limited Pay Whole Life policy, such as a LP 65, a 20 Pay Life or even a 1 Pay life. Universal Life policies were often purchased with a single premium before tax law rules regarding Modified Endowment Contracts (MECs) were adopted."},
                  {"phrase1":"Standard","phrase2":"A risk that meets the same conditions of health, physical condition, and other underwriting criteria used by actuaries when developing rates and benefits from a Mortality or Morbidity Table. The Standard Risk is also known as the Average Risk. Remember, most people are insurable. It is just a matter of classifying them into the proper rating category"},
@@ -583,12 +583,15 @@ function migrationCheck() {
     var deck2 = new Deck(key2);
     for (var ndx=0; ndx < data.length; ndx++) {
         var newCard = new Card(data[ndx]);
-        var newCard2 = new Card(terms[ndx]);
         newCard.save();
-        newCard2.save();
         deck.add(newCard);
-        deck2.add(newCard2)
     }
+    for (var ndx=0; ndx < terms.length; ndx++) {
+    	var newCard2 = new Card(terms[ndx]);
+    	newCard2.save();
+    	deck2.add(newCard2);
+    }
+    
     
     deck.save();
     deck2.save();
@@ -601,7 +604,7 @@ function migrationCheck() {
     //add to mgr and cleanup
     DECKMGR.deck_add(key);
     DECKMGR.deck_add(key2);
-    DECKMGR.deck_load(0);
+    DECKMGR.deck_load(1);
     DECKMGR.save();
 }
 
