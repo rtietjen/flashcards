@@ -291,8 +291,8 @@ a:link, a:visited {
 #main-container {
     position:absolute;
     top:91px;
-    margin: 0 3%;
-    width:94%;
+    margin: 0 10%;
+    width:80%;
     font-size:12px;
 }
 
