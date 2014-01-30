@@ -306,7 +306,7 @@ function migrationCheck() {
      * 
      */
     var data = [{"phrase1":"401k plan","phrase2":"A qualified retirement plan in which the employee can set aside a portion of their income with pre-tax dollars. "},
-                {"phrase1":"Absolute Assignment v. Collateral Assignment","phrase2":" Absolute: A permanent and irrevocable transfer of rights and/or benefits by the policyowner. Collateral: A temporary and/or revocable transfer of benefits by the policyowner. "},
+                {"phrase1":"Absolute Assignment vs. Collateral Assignment","phrase2":" Absolute: A permanent and irrevocable transfer of rights and/or benefits by the policyowner. Collateral: A temporary and/or revocable transfer of benefits by the policyowner. "},
                 {"phrase1":"Accelerated Death Benefit","phrase2":"Policy provision that allows full or partial payment of the policy's death benefit before the insured's death if he/she is terminally ill. "},
                 {"phrase1":"Accidental Death Benefit","phrase2":"An extra cost rider that requires the insurance company to pay an additional benefit in the event that the insured dies within 90 days of an accident as a direct result of the accident. "},
                 {"phrase1":"Accumulate at Interest","phrase2":"The Dividend Option where the policyowner leaves the dividends with the insurer to invest and earn interest. "},
@@ -330,7 +330,7 @@ function migrationCheck() {
                 {"phrase1":"Conditional Receipt","phrase2":"An interim insuring agreement under which the insurance company agrees to start coverage on the later of either the date of application or the date of the medical exam IF the proposed insured is found to be insurable on that date. "},
                 {"phrase1":"Consideration","phrase2":"A necessary element of a contract; something of value exchanged for the transfer of risk. Insured's consideration is payment of premiums and truthful statements on the application. Insurer's consideration is promises contained in the contract. "},
                 {"phrase1":"Contingent Beneficiary","phrase2":"An alternate beneficiary designated to receive the policy proceeds in the event that the primary beneficiary dies before the insured. "},
-                {"phrase1":"Contributory Plan v. Noncontributory Plan","phrase2":"Contributory: Group insurance plan under which the employees contribute to the payment of premiums. Noncontributory: A group insurance plan in which the employer pays all the premiums for the policy. "},
+                {"phrase1":"Contributory Plan vs. Noncontributory Plan","phrase2":"Contributory: Group insurance plan under which the employees contribute to the payment of premiums. Noncontributory: A group insurance plan in which the employer pays all the premiums for the policy. "},
                 {"phrase1":"Convertible Term","phrase2":"Term insurance that specifically permits -conversion- of the policy into permanent protection without proof of insurability."},
                 {"phrase1":"Decreasing Term","phrase2":"Term life insurance in which the face amount of the policy decreases over time in scheduled steps. Most often used to cover a debt obligation (mortgage). "},
                 {"phrase1":"Dividends","phrase2":"Distributions paid out by insurance companies. Stock insurers pay dividends (portion of profit) to stockholders and they are taxable. Mutual insurers pay dividends (return of unneeded premiums) to policyowners and they are not taxable. Dividends are never guaranteed. "},
@@ -338,7 +338,7 @@ function migrationCheck() {
                 {"phrase1":"Estoppel","phrase2":"Legally preventing someone from asserting or reasserting a known right that they have previously waived. "},
                 {"phrase1":"Extended Term Insurance","phrase2":"Nonforfeiture option where cash value is used to make a single premium payment on a Term Insurance Policy of the same face amount as the original policy. Original policy can be reinstated. Not available on rated policies. "},
                 {"phrase1":"Face Amount","phrase2":"Amount payable in the event of death of the insured. Also called face value"},
-                {"phrase1":"Facultative Reinsurance v. Treaty Reinsurance","phrase2":"Facultative: Transferring risk from one insurance company to another on a policy-by-policy basis. Treaty: Transferring risk from one insurance company to another under a blanket agreement. "},
+                {"phrase1":"Facultative Reinsurance vs. Treaty Reinsurance","phrase2":"Facultative: Transferring risk from one insurance company to another on a policy-by-policy basis. Treaty: Transferring risk from one insurance company to another under a blanket agreement. "},
                 {"phrase1":"Fair Credit Reporting Act","phrase2":"A federal law that protects consumers in regard to their credit history. Establishes guidelines for how companies can access consumers' credit reports and what types of disclosures and notifications are required. "},
                 {"phrase1":"Financial Needs Approach","phrase2":"In determining how much life insurance is needed the needs of the surviving family are the focus. Using needs analysis worksheets"},
                 {"phrase1":"Fixed Amount Annuity","phrase2":"A Life Annuity that guarantees a fixed dollar payment at regular intervals during the lifetime of the annuitant. "},
@@ -701,6 +701,15 @@ function toggleOptionsShow() {
   }
 }
 
+jQuery.fn.center = function () {
+    this.css("position","absolute");
+    this.css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) + 
+                                                $(window).scrollTop()) + "px");
+    this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2) + 
+                                                $(window).scrollLeft()) + "px");
+    return this;
+};
+
 //set display for the current card
 function updateDisplay(opts) {
 	var windowHeight = $(window).height();
@@ -727,7 +736,9 @@ function updateDisplay(opts) {
         hide('msg-container');
         optionShow();
         document.getElementById('main').innerHTML = /*escape*/(card.phrase1);
+        $("#main").center();
         document.getElementById('main-alt').innerHTML = /*escape*/(card.phrase2);
+        $("#main-alt").center();
         //document.getElementById('meter').innerHTML = card.points;
         document.getElementById('key').value = card.key;
         
