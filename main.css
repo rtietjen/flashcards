@@ -156,6 +156,10 @@ a:link, a:visited {
     bottom:5px;
     right:5px;
 }
+.center{
+    top:calc(50% - 50px/2);   /* 50% - height/2 */
+    left:calc(50% - 50px/2);  /* 50% - width/2 */
+}
 
 #card-container {
     cursor:pointer;

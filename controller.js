@@ -736,9 +736,9 @@ function updateDisplay(opts) {
         hide('msg-container');
         optionShow();
         document.getElementById('main').innerHTML = /*escape*/(card.phrase1);
-        $("#main").center();
+    //    $("#main").center();
         document.getElementById('main-alt').innerHTML = /*escape*/(card.phrase2);
-        $("#main-alt").center();
+  //      $("#main-alt").center();
         //document.getElementById('meter').innerHTML = card.points;
         document.getElementById('key').value = card.key;
         
