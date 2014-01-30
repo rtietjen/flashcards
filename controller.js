@@ -713,7 +713,9 @@ jQuery.fn.center = function () {
 //set display for the current card
 function updateDisplay(opts) {
 	var windowHeight = $(window).height();
-	$('body').height( windowHeight );
+	var windowWidth = $(window).width();
+	$('body').height(windowHeight);
+	$('body').width(windowWidth);
     if (opts == undefined) {
         opts = {'direction':'right'};
     }
