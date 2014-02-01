@@ -17,6 +17,7 @@ get_blob_builder = function() {
     return document.BlobBuilder || document.WebKitBlobBuilder || document.MozBlobBuilder;
 }
 
+
 //show add form
 function add() {
   hide('option-container');
@@ -126,6 +127,11 @@ function deckSelect(value) {
         default:
             DECKMGR.deck_load(value);
             updateDisplay();
+    }
+    if (value == 2){
+    	document.getElementById('copyCard').innerHTML = 'Remove from My Deck';  	
+    }else{
+    	document.getElementById('copyCard').innerHTML = 'Copy to My Deck';  
     }
 }
 
@@ -579,8 +585,10 @@ function migrationCheck() {
                  {"phrase1":"Whole Life","phrase2":"A Life policy that runs for the insured’s whole life that is, until death or the ultimate age on the mortality table being used (age 100). Premiums for a Whole Life policy may be paid for the whole life or for a limited period (for example, 20-Pay-Life or LP65) during which the higher premium charged pays up the policy. Also known as permanent insurance."}];
     var key = "Life Terms";
     var key2 = "Life Glossary";
+    var key3 = "My Deck";
     var deck = new Deck(key);
     var deck2 = new Deck(key2);
+    var myDeck = new Deck(key3);
     for (var ndx=0; ndx < data.length; ndx++) {
         var newCard = new Card(data[ndx]);
         newCard.save();
@@ -595,6 +603,7 @@ function migrationCheck() {
     
     deck.save();
     deck2.save();
+    myDeck.save();
 //    var key = 'deck-'+makeKey();
 //    localStorage[key] = deck;
 //    var d = new Deck(key);
@@ -604,6 +613,7 @@ function migrationCheck() {
     //add to mgr and cleanup
     DECKMGR.deck_add(key);
     DECKMGR.deck_add(key2);
+    DECKMGR.deck_add(key3);
     DECKMGR.deck_load(1);
     DECKMGR.save();
 }
@@ -659,6 +669,24 @@ function optionShow() {
     show('option-del');
     show('option-edit');
     show('deck-choices');
+}
+//Copy card to student personal deck
+function copyCard() {
+	var card = DECKMGR.active().current();
+	if (DECKMGR.active().name != 'My Deck'){
+		var myDeckName = DECKMGR.decks[2];
+		var deck = new Deck(myDeckName);
+		deck.name=myDeckName;
+		deck.key = myDeckName;
+		deck.add(card);
+		deck.save();
+		DECKMGR.save();
+	}else{
+		DECKMGR.active().deleteCard(card);
+		updateDisplay();
+		
+	}
+	
 }
 
 function options() {
@@ -949,3 +977,4 @@ function updateOptions() {
     document.getElementById('option-animation').className = (DECKMGR.mode_animations) ? 'switch-on' : 'switch-off';
     document.getElementById('option-reverse').className = (DECKMGR.mode_reverse) ? 'switch-on' : 'switch-off';
 }
+

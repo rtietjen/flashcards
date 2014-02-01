@@ -35,8 +35,8 @@
                                 </select>
                                 
                                 <div id="deck-options">
-                                    <div class="button" onclick="deckRename()">rename</div>
-                                    <div class="button" onclick="deckDelete()">delete</div>
+                                    <div class="button" onclick="deckRename()" style="display:none">rename</div>
+                                    <div class="button" onclick="deckDelete()" style="display:none">delete</div>
                                 </div>
                             </div><!-- deck-choices -->
                             
@@ -62,8 +62,7 @@
                     
                     <div id="option-container-right">
                         <div id="option-crud">
-                            <div>Card options</div>
-                            <div id="card-options">
+                            <div id="card-options" style="display:none">
                                 <div id="option-add" class="button" onclick="add()">add</div>
                                 <div id="option-edit" class="button" onclick="edit()">edit</div>
                                 <div id="option-del" class="button" onclick="del()">delete</div>
@@ -118,6 +117,7 @@
             <div id="options-container">
                 <div id="button-shuffle" title="shuffle" class="button" onclick="shuffle()"></div>
                 <div id="options">
+                	<div id="copyCard" class="button" onclick="copyCard()">Copy to My Deck</div>
                     <div id="stats">0 / 0</div>
                     <div id="button-options" class="button" onclick="options()">options</div>
                 </div>
