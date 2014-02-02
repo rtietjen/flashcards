@@ -250,6 +250,9 @@ function hotkeyEnable() {
 }
 
 function init() {
+	$( window ).on( "orientationchange", function( event ) {
+		updateDisplay();
+	}
   DECKMGR = new DeckMGR('deckmgr');
   //if deckmgr is empty it could be first run or need to be migrated
   if (DECKMGR.length() <= 0) {
