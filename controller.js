@@ -262,7 +262,7 @@ function init() {
   }
   updateDisplay();
   $( window ).on( "orientationchange", function( event ) {
-	  setTimeout("updateDisplay()",200);
+	  setTimeout("updateDisplay()",150);
 	});
 }
 
