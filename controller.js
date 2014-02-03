@@ -261,8 +261,9 @@ function init() {
     }
   }
   updateDisplay();
-	$( window ).on( "orientationchange", function( event ) {
-		updateDisplay();
+  $( window ).on( "orientationchange", function( event ) {
+		//updateDisplay();
+	  alert("Orientation changed");
 	});
 }
 
