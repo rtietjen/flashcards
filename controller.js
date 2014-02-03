@@ -262,8 +262,7 @@ function init() {
   }
   updateDisplay();
   $( window ).on( "orientationchange", function( event ) {
-		//updateDisplay();
-	  alert("Orientation changed");
+	  setTimeout("updateDisplay()",500);
 	});
 }
 
