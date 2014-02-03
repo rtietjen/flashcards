@@ -363,8 +363,7 @@ a:link, a:visited {
 #options {
     position:absolute;
     top:8px;
-    left:105px;
-    width:352px;
+	left:calc(50% - 50px/2);  /* 50% - width/2 */
     padding-bottom:5px;
 }
     #options div {
