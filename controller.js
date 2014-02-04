@@ -255,6 +255,7 @@ function saveSerial(){
 	var serialJson = new Object();
 	serialJson.serial = hexValue;
 	localStorage['SerialFlashCards']= JSON.stringify(serialJson,null,2);
+	updateDisplay();
 	init();
 }
 
@@ -267,7 +268,7 @@ function validateSerial(){
 		if (serial > currentDate){
 			return true;
 		}
-		document.getElementById('serialText').innerHTML = 'Your serial has experied. Please input a new one:';
+		document.getElementById('serialText').innerHTML = 'Your serial has expired. Please input a new one:';
 		document.getElementById('serialNumber').value = '';
 		document.getElementById('serialNumber').style.backgroundColor = '#ff0000';
 		return false;
