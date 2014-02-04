@@ -249,7 +249,46 @@ function hotkeyEnable() {
   document.onkeydown = checkHotkey;
 }
 
+function saveSerial(){
+	var serial = document.getElementById('serialNumber').value;
+	var hexValue = parseInt(serial, 16);
+	var serialJson = new Object();
+	serialJson.serial = hexValue;
+	localStorage['SerialFlashCards']= JSON.stringify(serialJson,null,2);
+	init();
+}
+
+function validateSerial(){
+	if (localStorage['SerialFlashCards']){
+		var currentDate = new Date();
+		currentDate =  Date.parse(currentDate);
+		var jsonSerial = JSON.parse(localStorage['SerialFlashCards']);
+		var serial = jsonSerial.serial;
+		if (serial > currentDate){
+			return true;
+		}
+		document.getElementById('serialText').innerHTML = 'Your serial has experied. Please input a new one:';
+		document.getElementById('serialNumber').value = '';
+		document.getElementById('serialNumber').style.backgroundColor = '#ff0000';
+		return false;
+	}else{
+		return false;
+	}
+	
+}
 function init() {
+	var windowHeight = $(window).height();
+	var windowWidth = $(window).width();
+	$('body').height(windowHeight);
+	$('body').width(windowWidth);
+	if (validateSerial()){
+		hide('serial');
+		show('container');
+	}else{
+		hide('container');
+		show('serial');
+	}
+		
   DECKMGR = new DeckMGR('deckmgr');
   //if deckmgr is empty it could be first run or need to be migrated
   if (DECKMGR.length() <= 0) {
